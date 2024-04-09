@@ -6,12 +6,17 @@ class Program
 
     private static string alfabeto = "abcdefghijklmñnopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890_-+,#$%&/()=¿?¡!|,.;:{}[]";
 
+    private static int dist1;
+    private static int dist2;
+
     public static void Main()
     {
 
         Console.WriteLine("Ingrese la frase a cifrar");
-
         string msj1 = Console.ReadLine();
+        Console.WriteLine("Ingrese la distancia del cifrado");
+        dist1 = Convert.ToInt32(Console.ReadLine());
+
 
         while (string.IsNullOrEmpty(msj1))
         {
@@ -22,7 +27,10 @@ class Program
         Console.WriteLine("Ingrese la frase a descrifrar");
 
         string msj2 = Console.ReadLine();
-
+       
+        Console.WriteLine("Ingrese la distancia del descifrado");
+      
+        dist2 = Convert.ToInt32(Console.ReadLine());
         while (string.IsNullOrEmpty(msj2))
         {
             Console.WriteLine("Ingrese un mensaje no vacio");
@@ -61,7 +69,7 @@ class Program
 
             }
 
-            position = (position + 7) % alfabeto.Length;
+            position = (position + dist1) % alfabeto.Length;
 
             aux += alfabeto[position];
 
@@ -95,7 +103,7 @@ class Program
 
             }
 
-            position = (position - 7) + alfabeto.Length * BoolToInt(position - 7 < 0);
+            position = (position - dist2) + alfabeto.Length * BoolToInt(position - dist2 < 0);
 
             aux += alfabeto[position];
 
